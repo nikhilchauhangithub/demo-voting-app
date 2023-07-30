@@ -10,22 +10,21 @@ spec:
   selector:
     matchLabels:
       name: postgres-pod
-    app: demo-voting-app
-
+      app: demo-voting-app
   template:
-  metadata:
-  name: postgres-pod
-  labels:
-    name: postgres-pod
-    app: demo-voting-app
-  spec:
-  containers:
-    - name: postgres-pod
-      image: postgres
-      ports:
-        - containerPort: 5432
-      env:
-        - name: POSTGRES_USER
-          value: 'postgres'
-        - name: POSTGRES_PASSWORD
-          value: 'postgres'
+    metadata:
+      name: postgres-pod
+      labels:
+        name: postgres-pod
+        app: demo-voting-app
+    spec:
+      containers:
+        - name: postgres-container
+          image: postgres
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: 'postgres'
+            - name: POSTGRES_PASSWORD
+              value: 'postgres'

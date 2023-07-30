@@ -1,25 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis-deploy
+  name: worker-app-deploy
   labels:
-    name: redis-deploy
+    name: worker-app-deploy
     app: demo-voting-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: redis-pod
+      name: worker-app-pod
       app: demo-voting-app
   template:
     metadata:
-      name: redis-pod
+      name: worker-app-pod
       labels:
-        name: redis-pod
+        name: worker-app-pod
         app: demo-voting-app
     spec:
       containers:
-        - name: redis
-          image: redis
-          ports:
-            - containerPort: 6379
+        - name: worker-app
+          image: kodekloud/examplevotingapp_worker:v1
